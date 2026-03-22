@@ -1,0 +1,57 @@
+:root {
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Helvetica, Arial, sans-serif;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Keep link styling Bootstrap-friendly */
+a {
+  text-decoration: none;
+}
+a:hover {
+  text-decoration: underline;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  min-height: 100vh;
+}
+
+h1 {
+  font-size: 3.2em;
+  line-height: 1.1;
+}
+
+#app {
+  max-width: none;
+  margin: 0;
+  padding: 0;
+  text-align: left;
+}
+
+/* Resume page printing */
+@media print {
+  nav,
+  footer,
+  .btn,
+  .navbar,
+  #techFilter,
+  label[for='techFilter'] {
+    display: none !important;
+  }
+
+  main.container {
+    padding: 0 !important;
+    margin: 0 !important;
+    max-width: none !important;
+  }
+}
+
+/* Keep form alerts from jumping layout too much */
+#contactAlert .alert {
+  margin-top: 1rem;
+}
+
+/* Buttons are styled by Bootstrap */
