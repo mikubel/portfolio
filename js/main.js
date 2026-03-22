@@ -243,19 +243,23 @@ if (contactForm) {
             return;
         }
 
-        // Simulate form submission
         const submitBtn = contactForm.querySelector('button[type="submit"]');
         const originalText = submitBtn.innerHTML;
         submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Sending...';
         submitBtn.disabled = true;
-
-        // Simulate API call
-        setTimeout(() => {
-            showNotification('Message sent successfully! I\'ll get back to you soon.', 'success');
-            contactForm.reset();
-            submitBtn.innerHTML = originalText;
-            submitBtn.disabled = false;
-        }, 1500);
+        
+        // Open email client with form data
+        const emailSubject = encodeURIComponent(data.subject);
+        const emailBody = encodeURIComponent(`Name: ${data.name}\nEmail: ${data.email}\n\nMessage:\n${data.message}`);
+        const mailtoLink = `mailto:mikubel5@gmail.com?subject=${emailSubject}&body=${emailBody}`;
+        
+        window.location.href = mailtoLink;
+        
+        showNotification('Email client opened! Please send the email.', 'success');
+        contactForm.reset();
+        
+        submitBtn.innerHTML = originalText;
+        submitBtn.disabled = false;
     });
 }
 
